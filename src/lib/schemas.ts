@@ -47,7 +47,7 @@ const band = z.preprocess(toBandOrNull, BandSchema.nullable());
 const Confidence = z.enum(["high", "medium", "low"]);
 export type Confidence = z.infer<typeof Confidence>;
 
-const lowerEnum = <T extends readonly [string, ...string[]]>(values: T, fallback: T[number]) =>
+const lowerEnum = <const T extends readonly [string, ...string[]]>(values: T, fallback: T[number]) =>
   z.preprocess((v) => (typeof v === "string" ? v.trim().toLowerCase() : v), z.enum(values).catch(fallback));
 
 const stringArray = z.preprocess(
@@ -252,7 +252,7 @@ export type TraceEntry = {
 
 export type Verdict = "likely_overcharged" | "possible_issues" | "looks_fine" | "needs_info";
 
-export type OverchargeLine = { label: string; naira: number; formula: string };
+export type OverchargeLine = { label: string; naira: number; formula: string; kind: "arithmetic" | "tariff" };
 export type Overcharge = { totalNaira: number; breakdown: OverchargeLine[] };
 
 export type Source = { url: string; title: string; usedFor: string };
