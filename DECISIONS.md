@@ -9,3 +9,4 @@ One line per non-obvious decision.
 - Next.js 16.4 scaffold ships with `cacheComponents: true`; kept. All API routes are POST or request-dependent GET, so they stay dynamic.
 - `@types/node` pinned to ^22 so vitest 5's peer range resolves.
 - Playwright pinned to the preinstalled 1.63.0 so `make-samples` uses the bundled Chromium without a download.
+- `export const runtime = "nodejs"` is rejected when `cacheComponents` is on; Node.js is the default runtime in Next 16, so routes only export `maxDuration`.

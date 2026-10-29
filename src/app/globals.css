@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* "Electric receipt" theme — light mode only. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-paper: #faf7f0;
+  --color-paper-deep: #f1ecdf;
+  --color-ink: #111111;
+  --color-ink-soft: #4a4740;
+  --color-volt: #ffd60a;
+  --color-volt-deep: #f5c800;
+  --color-signal: #d62828;
+  --color-pass: #2b9348;
+  --color-amber: #f59e0b;
   --font-sans: var(--font-geist-sans);
+  --font-heading: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  color-scheme: light;
+}
+
+html {
+  background: var(--color-paper);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Receipt perforation separator */
+.perforation {
+  height: 2px;
+  background-image: linear-gradient(to right, var(--color-ink) 0 8px, transparent 8px 14px);
+  background-size: 14px 2px;
+  background-repeat: repeat-x;
+  opacity: 0.35;
+}
+
+/* Zig-zag torn edge for receipt cards */
+.receipt-edge {
+  position: relative;
+}
+.receipt-edge::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 10px;
+  background: linear-gradient(-45deg, transparent 7px, white 0) 0 0 / 14px 10px repeat-x,
+    linear-gradient(45deg, transparent 7px, white 0) 0 0 / 14px 10px repeat-x;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline-color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print: only the complaint letter. */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  #print-letter,
+  #print-letter * {
+    visibility: visible !important;
+  }
+  #print-letter {
+    position: absolute;
+    inset: 0;
+    padding: 2cm;
+    font: 12pt/1.5 Georgia, "Times New Roman", serif;
+    color: #000;
+    white-space: pre-wrap;
+    display: block !important;
+  }
 }
