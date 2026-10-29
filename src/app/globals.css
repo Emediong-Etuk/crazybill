@@ -40,21 +40,6 @@ body {
   opacity: 0.35;
 }
 
-/* Zig-zag torn edge for receipt cards */
-.receipt-edge {
-  position: relative;
-}
-.receipt-edge::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -10px;
-  height: 10px;
-  background: linear-gradient(-45deg, transparent 7px, white 0) 0 0 / 14px 10px repeat-x,
-    linear-gradient(45deg, transparent 7px, white 0) 0 0 / 14px 10px repeat-x;
-}
-
 .tabular {
   font-variant-numeric: tabular-nums;
 }

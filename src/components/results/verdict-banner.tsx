@@ -18,8 +18,7 @@ export function VerdictBanner({ result }: { result: AuditResult }) {
     <section
       aria-labelledby="verdict"
       className={cn(
-        "receipt-edge rounded-t-xl border-2 border-b-0 border-ink bg-white p-5 pb-6",
-        v === "likely_overcharged" && "bg-white",
+        "rounded-t-xl border-2 border-b-0 border-ink bg-white p-5 pb-2",
       )}
     >
       <div className="flex items-center justify-between gap-2">

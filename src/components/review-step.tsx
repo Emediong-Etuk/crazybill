@@ -154,7 +154,7 @@ function ReviewForm({ doc, onSubmit, onBack }: { doc: ExtractedDoc; onSubmit: (d
       {groups.map((g) => (
         <fieldset key={g.id} className="rounded-xl border-2 border-ink bg-white p-4">
           <legend className="-ml-1 bg-white px-1 font-mono text-xs font-bold uppercase tracking-widest">{g.title}</legend>
-          <div className="grid grid-cols-2 gap-x-3 gap-y-4">
+          <div className="grid grid-cols-2 items-start gap-x-3 gap-y-4">
             {g.fields.map((f) => {
               const meta = FIELD_META[f];
               const numeric = (NUMERIC_DOC_FIELDS as readonly string[]).includes(f);
@@ -163,12 +163,7 @@ function ReviewForm({ doc, onSubmit, onBack }: { doc: ExtractedDoc; onSubmit: (d
               const id = `f-${f}`;
               return (
                 <div key={f} className={cn("flex flex-col gap-1.5", wide && "col-span-2")}>
-                  <Label htmlFor={id} className="justify-between">
-                    <span>{meta?.label ?? f}</span>
-                    {isFlagged && (
-                      <span className="rounded bg-amber px-1.5 py-0.5 text-[10px] font-bold uppercase text-ink">check this</span>
-                    )}
-                  </Label>
+                  <Label htmlFor={id}>{meta?.label ?? f}</Label>
                   <div className="relative">
                     {meta?.kind === "money" && (
                       <span className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 font-mono text-ink-soft">₦</span>
@@ -178,7 +173,7 @@ function ReviewForm({ doc, onSubmit, onBack }: { doc: ExtractedDoc; onSubmit: (d
                       inputMode={numeric ? "decimal" : "text"}
                       autoComplete="off"
                       value={draft[f] ?? ""}
-                      placeholder={unreadable.includes(f) ? "unreadable — type it" : "—"}
+                      placeholder={unreadable.includes(f) ? "type it" : "—"}
                       onChange={(e) => set(f, e.target.value)}
                       aria-describedby={meta?.hint ? `${id}-hint` : undefined}
                       className={cn(
@@ -188,6 +183,11 @@ function ReviewForm({ doc, onSubmit, onBack }: { doc: ExtractedDoc; onSubmit: (d
                       )}
                     />
                   </div>
+                  {isFlagged && (
+                    <span className="w-fit rounded bg-amber px-1.5 py-0.5 text-[11px] font-bold uppercase text-ink">
+                      {unreadable.includes(f) ? "couldn't read — check this" : "check this"}
+                    </span>
+                  )}
                   {meta?.hint && (
                     <span id={`${id}-hint`} className="text-xs text-ink-soft">
                       {meta.hint}

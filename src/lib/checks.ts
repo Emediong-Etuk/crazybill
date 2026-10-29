@@ -32,6 +32,10 @@ const NAMES: Partial<Record<keyof ExtractedDoc, string>> = {
   totalDue: "total due",
   amountPaid: "amount paid",
   tokenUnitsKWh: "units",
+  otherCharges: "other charges",
+  balanceBroughtForward: "balance brought forward",
+  payments: "payments",
+  adjustments: "adjustments",
 };
 const names = (fs: string[]) => fs.map((f) => NAMES[f as keyof ExtractedDoc] ?? f).join(", ");
 

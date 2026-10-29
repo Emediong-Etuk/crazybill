@@ -19,3 +19,4 @@ One line per non-obvious decision.
 - Verdict: `needs_info` is skipped when a code check failed (we already have something concrete); `likely_overcharged` also fires when code-proven arithmetic alone ≥ threshold (no source needed for maths); any positive total → at least `possible_issues`.
 - Prepaid token check with VAT not printed assumes VAT_RATE_HINT and reports `info` instead of `fail`.
 - Added `kind: "arithmetic" | "tariff"` to overcharge lines and a `meta` block to AuditResult (DisCo, masked account, doc type) for the UI/letter.
+- Geist Black + Geist Mono Bold TTFs (SIL OFL) are vendored in `src/assets` for the OG image; next/og only bundles Geist Regular.

@@ -31,7 +31,7 @@ export function UploadStep({
         <p className="inline-flex w-fit items-center gap-1.5 rounded-full border-2 border-ink bg-volt px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider">
           <span className="size-2 rounded-full bg-ink" aria-hidden /> NEPA bill checker
         </p>
-        <h1 id="hero" className="font-heading text-[2.4rem] leading-[1.02] font-extrabold tracking-tight sm:text-5xl">
+        <h1 id="hero" className="font-heading text-[2.4rem] leading-[1.16] font-extrabold tracking-tight sm:text-5xl">
           Snap your light bill.
           <br />
           <span className="bg-volt px-1 box-decoration-clone">Find the overcharge.</span>
