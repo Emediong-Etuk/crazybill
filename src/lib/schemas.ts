@@ -279,7 +279,7 @@ export type StepId = "checks" | "research" | "compute" | "letter";
 export type AuditEvent =
   | { type: "step"; id: StepId; status: "start" | "done" | "error"; label: string }
   | { type: "tool"; name: "tavily_search" | "tavily_extract" | "calc"; summary: string }
-  | { type: "notice"; message: string }
+  | { type: "notice"; message: string; replay?: boolean }
   | { type: "result"; data: AuditResult }
   | { type: "error"; message: string; recoverable: boolean };
 
