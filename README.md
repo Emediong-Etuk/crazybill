@@ -76,7 +76,7 @@ Tavily is the agent's window onto current rules — tariffs change, so nothing i
 Requires Node 20+.
 
 ```bash
-git clone <repo-url> crazybill && cd crazybill
+git clone https://github.com/Emediong-Etuk/crazybill && cd crazybill
 npm i
 cp .env.example .env.local   # add NEBIUS_API_KEY and TAVILY_API_KEY
 npm run list-models          # confirm the Nemotron model IDs exist

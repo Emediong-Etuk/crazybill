@@ -6,7 +6,7 @@
 
 **Track:** Best Apps and Agents (also entering: Best Use of Tavily)
 
-**Links:** Live demo `<url>` · Repo `<url>` · Video `<url>`
+**Links:** Live demo `<url>` · Repo https://github.com/Emediong-Etuk/crazybill · Video `<url>`
 
 ## Inspiration
 
